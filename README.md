@@ -1,9 +1,9 @@
- ## Digital Twin Library
+# Digital Twin Library
 
- A lightweight layer for executing Digital Twin scenarios using the DISSECT-CF-Fog simulator in Swarmchestrate.
+A lightweight layer for executing Digital Twin scenarios using the DISSECT-CF-Fog simulator in Swarmchestrate.
  
 
- ### Getting started with DISSECT-CF-Fog
+## Getting started with DISSECT-CF-Fog
 
 Prerequisites:
  - **JDK 17**
@@ -24,14 +24,14 @@ After a successful build, the simulator JAR will be created in:
 ***Alternatively, IntelliJ IDEA simplifies the setup with built-in Maven support and integrated JDK management.***
 
 
-#### Running the Simulator Manually
+### Running the Simulator Manually
 
 The simulator can also be run directly from the command line for testing purposes. In such cases, it expects input in JSON format via standard input.
 
 `java -cp path/to/simulator.jar hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo`
 
 
-### Local Testing (CLI)
+## Local Testing (CLI)
 
 The Digital Twin engine can be executed locally using the provided CLI interface.
 
@@ -66,7 +66,7 @@ python -m dt.cli --help
 ```
 
 
-### Using Digital Twin as a Library
+## Using Digital Twin as a Library
 
 The Digital Twin engine can also be used as a Python library and integrated into other systems. 
 
