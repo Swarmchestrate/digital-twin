@@ -4,7 +4,8 @@ Runs scenarios as subprocesses and writes aggregated results to a JSON file.
 
 import json
 import subprocess
-import sys
+#import sys
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 import time
@@ -93,8 +94,15 @@ class SimulatorRunner:
             end = time.perf_counter()
             print(f"[{scenario_id}] timeout after {self.timeout}s")
 
-            proc.kill() # TODO: verify on Linux, as process termination is unreliable on Windows
-           
+            if os.name == "nt":
+                subprocess.run(
+                    ["taskkill", "/PID", str(proc.pid), "/T", "/F"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                )
+            else:
+                proc.kill()   # TODO: test it on Linux
+            
             return {
                 "scenario_id": scenario_id,
                  "status": "error",
