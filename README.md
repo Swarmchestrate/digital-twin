@@ -15,7 +15,15 @@ At the moment, the Maven project is located in the `simulator` directory of the 
 
 Run the Maven build command in that directory:
 
-`mvn clean package`
+```bash
+mvn clean package
+```
+
+In case of failing tests: 
+
+```bash
+mvn clean package -DskipTests
+```
 
 After a successful build, the simulator JAR will be created in:
 
@@ -26,9 +34,17 @@ After a successful build, the simulator JAR will be created in:
 
 ### Running the Simulator Manually
 
-The simulator can also be run directly from the command line for testing purposes. In such cases, it expects input in JSON format via standard input.
+The simulator can also be run directly from the command line for testing purposes. It expects two command-line arguments:
 
-`java -cp path/to/simulator.jar hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo`
+1. Path to the Digital Twin input JSON file
+2. Path to the noise dataset CSV file
+
+```bash
+java -cp path/to/simulator.jar \
+  hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo \
+  path/to/dt-input.json \
+  path/to/noise-data.csv
+```
 
 
 ## Local Testing (CLI)
@@ -53,6 +69,7 @@ Run the CLI from the project root directory:
 python -m dt.cli \
   --input path/to/dt-input.json  \
   --jar path/to/simulator.jar \
+  --noise-csv path/to/noise-data.csv \
   --output path/to/output_dir \
   --max-workers 4 \            # parallel executions
   --timeout 60                 # timeout per scenario (seconds)
@@ -72,7 +89,9 @@ The Digital Twin engine can also be used as a Python library and integrated into
 
 Install directly from GitHub:
 
-`pip install git+https://github.com/Swarmchestrate/digital-twin.git`
+```bash
+pip install git+https://github.com/Swarmchestrate/digital-twin.git
+```
 
 Example:
 
@@ -82,6 +101,7 @@ from dt.engine import DtEngine
 engine = DtEngine(
     input_path="dt-input.json",
     jar="simulator.jar",
+    noise_csv_path="noise-data.csv",
     output_path="output",
     max_workers=4,
     timeout=60,
