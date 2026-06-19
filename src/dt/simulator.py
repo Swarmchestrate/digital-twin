@@ -12,9 +12,10 @@ import time
 
 class SimulatorRunner:
 
-    def __init__(self, result_dir: str | Path, jar_path: str | Path, max_workers: int = 1, timeout: int = 60) -> None:
+    def __init__(self, result_dir: str | Path, jar_path: str | Path, noise_csv_path: str | Path, max_workers: int = 1, timeout: int = 60) -> None:
         self.result_dir = Path(result_dir)
         self.jar_path = Path(jar_path)
+        self.noise_csv_path = Path(noise_csv_path)
         self.max_workers = max_workers
         self.timeout = timeout
 
@@ -31,7 +32,6 @@ class SimulatorRunner:
             futures = [
                 executor.submit(
                     self._run_single_scenario,
-                    scenario["scenario_id"],
                     scenario["request"],
                 )
                 for scenario in scenarios
@@ -49,25 +49,17 @@ class SimulatorRunner:
             "scenarios": results,
         }
 
-    def _run_single_scenario(self, scenario_id: str, request: dict) -> dict:
-        # Save input for debugging 
-        input_path = self.result_dir / f"{scenario_id}_input.json"
+    def _run_single_scenario(self, request: dict) -> dict:
+        request_id = request["metadata"]["request_id"]
+
+        # Save input for debugging
+        input_path = self.result_dir / f"{request_id}_input.json"
 
         with input_path.open("w", encoding="utf-8") as f:
             json.dump(request, f, indent=2, ensure_ascii=False)
 
-        # For testing with dummy worker
-        # worker_path = Path(__file__).with_name("dummy_worker.py")
-        # cmd = [sys.executable, str(worker_path)]
-        # completed = subprocess.run(
-        #    cmd,
-        #    input=json.dumps(request),   # send request via stdin
-        #    capture_output=True,         # capture stdout/stderr
-        #    text=True,                  # use strings instead of bytes
-        #)
-
         start = time.perf_counter()
-        print(f"[{scenario_id}] started..")
+        print(f"[{request_id}] started..")
 
         proc = subprocess.Popen(
             [
@@ -75,24 +67,38 @@ class SimulatorRunner:
                 "-cp",
                 str(self.jar_path),
                 "hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo",
+                str(input_path),
+                str(self.noise_csv_path),
             ],
-            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
-            )
-        
+        )
+
+        result = {
+            "request_id": request_id,
+            "status": "ok",
+            "returncode": None,
+            "stdout": "",
+            "stderr": "",
+        }
+
         try:
-            stdout, stderr = proc.communicate(
-            input=json.dumps(request, ensure_ascii=False),
-            timeout=self.timeout
-            )
+            stdout, stderr = proc.communicate(timeout=self.timeout)
+
+            result["returncode"] = proc.returncode
+            result["stdout"] = stdout
+            result["stderr"] = stderr
+
             end = time.perf_counter()
-            print(f"[{scenario_id}] completed successfully in {end - start:.2f}s")
+            print(f"[{request_id}] finished in {end - start:.2f}s")
+
+            if proc.returncode != 0:
+                result["status"] = "error"
 
         except subprocess.TimeoutExpired:
             end = time.perf_counter()
-            print(f"[{scenario_id}] timeout after {self.timeout}s")
+            print(f"[{request_id}] timeout after {self.timeout}s")
 
             if os.name == "nt":
                 subprocess.run(
@@ -101,41 +107,14 @@ class SimulatorRunner:
                     stderr=subprocess.DEVNULL,
                 )
             else:
-                proc.kill()   # TODO: test it on Linux
-            
-            return {
-                "scenario_id": scenario_id,
-                 "status": "error",
-                "stdout": "",
-                "stderr": f"scenario execution timed out after {self.timeout} seconds",
-            }
+                proc.kill()
 
-        # Handle execution error
-        if proc.returncode != 0:
-            return {
-                "scenario_id": scenario_id,
-                "status": "error",
-                "stdout": stdout,
-                "stderr": stderr,
-            }
+            result["status"] = "timeout"
+            result["stderr"] = (
+                f"scenario execution timed out after {self.timeout} seconds"
+            )
 
-        # Parse worker output (expected to be JSON)
-        try:
-            result = json.loads(stdout)
-        except json.JSONDecodeError:
-            return {
-                "scenario_id": scenario_id,
-                "status": "error",
-                "stdout": stdout,
-                "stderr": "invalid JSON from worker",
-            }
-
-        # Successful execution
-        return {
-            "scenario_id": scenario_id,
-            "status": "ok",
-            "result": result,
-        }
+        return result
 
     def _write_result_file(self, result_file: Path, results: list[dict]) -> None:
         data = {

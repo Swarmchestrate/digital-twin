@@ -10,12 +10,12 @@ from dt.simulator import SimulatorRunner
 
 class DtEngine:
 
-    def __init__(self, input_path: str | Path, jar: str | Path, output_path: str | Path, max_workers: int, timeout: int) -> None:
+    def __init__(self, input_path: str | Path, jar: str | Path, output_path: str | Path, noise_csv_path: str | Path, max_workers: int, timeout: int) -> None:
         if max_workers < 1 or max_workers > os.cpu_count():
             max_workers = max(1, min(max_workers, os.cpu_count()))
             
         self.scenario_builder = ScenarioBuilder()
-        self.simulator_runner = SimulatorRunner(output_path, jar, max_workers, timeout)
+        self.simulator_runner = SimulatorRunner(output_path, jar, noise_csv_path, max_workers, timeout)
         self.input_path = input_path
 
     def evaluate(self, request: dict) -> dict:
