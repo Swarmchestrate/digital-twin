@@ -7,7 +7,7 @@ from dt.engine import DtEngine
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run the digital twin on one input JSON file."
+        description="Generate simulation scenarios from an input JSON file and execute them."
     )
 
     parser.add_argument(
@@ -48,9 +48,15 @@ def main() -> None:
         help="Timeout (in seconds) for a single scenario execution",
     )
 
+    parser.add_argument(
+        "--keep-files",
+        action="store_true",
+        help="Keep simulator temporary result directory for debugging",
+    )
+
     args = parser.parse_args()
     print("Starting Digital Twin execution..")
-    engine = DtEngine(args.input, args.jar, args.output, args.noise_csv, args.max_workers, args.timeout)
+    engine = DtEngine(args.input, args.jar, args.output, args.noise_csv, args.max_workers, args.timeout, args.keep_files)
     engine.evaluate_file()
 
 if __name__ == "__main__":

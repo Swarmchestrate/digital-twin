@@ -4,20 +4,22 @@ Runs scenarios as subprocesses and writes aggregated results to a JSON file.
 
 import json
 import subprocess
-#import sys
+import signal
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 import time
+import shutil
 
 class SimulatorRunner:
 
-    def __init__(self, result_dir: str | Path, jar_path: str | Path, noise_csv_path: str | Path, max_workers: int = 1, timeout: int = 60) -> None:
+    def __init__(self, result_dir: str | Path, jar_path: str | Path, noise_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, keep_files: bool = False) -> None:
         self.result_dir = Path(result_dir)
         self.jar_path = Path(jar_path)
         self.noise_csv_path = Path(noise_csv_path)
         self.max_workers = max_workers
         self.timeout = timeout
+        self.keep_files = keep_files
 
     def run_scenarios(self, scenarios: list[dict]) -> dict:
         self.result_dir.mkdir(parents=True, exist_ok=True)
@@ -29,13 +31,16 @@ class SimulatorRunner:
 
         # Thread pool manages parallel execution of scenarios
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            futures = [
-                executor.submit(
-                    self._run_single_scenario,
-                    scenario["request"],
+            futures = []
+
+            for scenario in scenarios:
+                futures.append(
+                    executor.submit(
+                        self._run_single_scenario,
+                        scenario["request"],
+                    )
                 )
-                for scenario in scenarios
-            ]
+                time.sleep(0.001)
 
             # Process results as soon as they complete
             for future in as_completed(futures):
@@ -44,6 +49,9 @@ class SimulatorRunner:
 
             self._write_result_file(result_file, results)
 
+        if not self.keep_files:
+            shutil.rmtree("sim_res", ignore_errors=True)
+        
         return {
             "scenario_count": len(results),
             "scenarios": results,
@@ -73,28 +81,29 @@ class SimulatorRunner:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            start_new_session=True,
         )
 
         result = {
             "request_id": request_id,
-            "status": "ok",
             "returncode": None,
-            "stdout": "",
-            "stderr": "",
         }
 
         try:
             stdout, stderr = proc.communicate(timeout=self.timeout)
 
             result["returncode"] = proc.returncode
-            result["stdout"] = stdout
-            result["stderr"] = stderr
+
+            if proc.returncode == 0:
+                try:
+                    result["metrics"] = json.loads(stdout)
+                except json.JSONDecodeError as e:
+                    result["stderr"] = (f"Failed to parse simulator stdout as JSON: {e}")
+            else:
+                result["stderr"] = stderr
 
             end = time.perf_counter()
             print(f"[{request_id}] finished in {end - start:.2f}s")
-
-            if proc.returncode != 0:
-                result["status"] = "error"
 
         except subprocess.TimeoutExpired:
             end = time.perf_counter()
@@ -107,8 +116,9 @@ class SimulatorRunner:
                     stderr=subprocess.DEVNULL,
                 )
             else:
-                proc.kill()
-
+                #proc.kill()
+                os.killpg(proc.pid, signal.SIGTERM)
+                
             result["status"] = "timeout"
             result["stderr"] = (
                 f"scenario execution timed out after {self.timeout} seconds"

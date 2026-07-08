@@ -1,7 +1,7 @@
 # Digital Twin Library
 
 A lightweight layer for executing Digital Twin scenarios using the DISSECT-CF-Fog simulator in Swarmchestrate.
- 
+
 
 ## Getting started with DISSECT-CF-Fog
 
@@ -73,6 +73,7 @@ python -m dt.cli \
   --output path/to/output_dir \
   --max-workers 4 \            # parallel executions
   --timeout 60                 # timeout per scenario (seconds)
+  --keep-files                 # keep the simulator result directory (optional)
 ```
 
 Alternatively, install the project in editable mode to run it from anywhere:
@@ -99,12 +100,13 @@ Example:
 from dt.engine import DtEngine
 
 engine = DtEngine(
-    input_path="dt-input.json",
-    jar="simulator.jar",
-    noise_csv_path="noise-data.csv",
-    output_path="output",
-    max_workers=4,
-    timeout=60,
+    input_path="path/to/dt-input.json",
+    jar="path/to/simulator.jar",
+    noise_csv_path="path/to/noise-data.csv",
+    output_path="path/to/output_dir",
+    max_workers=4,    # parallel executions
+    timeout=60,       # timeout per scenario (seconds)
+    keep_files=True,  # keep the simulator result directory (optional)
 )
 
 result = engine.evaluate_file()
