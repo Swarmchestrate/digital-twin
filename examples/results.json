@@ -1,0 +1,115 @@
+{
+  "scenario_count": 2,
+  "scenarios": [
+    {
+      "request_id": "dt-request-1",
+      "returncode": 0,
+      "metrics": {
+        "innorenew-app-01": {
+          "noise_sensor1": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor2": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor3": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor4": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor5": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor6": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor7": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor8": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor9": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor10": "inside: false, sun-exposed: false, has-classifier: true"
+        },
+        "latency-metrics": {
+          "max-E2E_sec": 58.013,
+          "p95-E2E_sec": 10.012,
+          "p99-E2E_sec": 38.014,
+          "median-E2E_sec": 0.012,
+          "E2E-less-than-10s_percent": 91.23473541383989,
+          "average-E2E-latency_sec": 2.856
+        },
+        "scalin-decision-count": {
+          "scale-up-min": 0,
+          "scale-down-load": 0,
+          "scale-down-temperature": 0,
+          "scale-up-load": 1
+        },
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-energy_kwh": 0.12427908501650965,
+        "size-of-generated-files_mb": 2303,
+        "number-of-sound-events": 3686,
+        "number-of-offloaded-sound-events": 1772,
+        "number-of-sound-events-requiring-processing": 2183,
+        "number-of-processed-files": 2182,
+        "number-of-sound-files-on-noise-sensors": 0,
+        "number-of-sound-files-on-the-remote-servers": 3685,
+        "time-below-the-temperature-threshold_percent": 100.0,
+        "config-parameters": {
+          "sound-level-threshold_db": 71,
+          "min-CPU-temperature_celsius": 51.0,
+          "max-CPU-temperature_celsius": 82.0,
+          "CPU-temperature-threshold_celsius": 81.0,
+          "min-container-count": 1,
+          "scaling cooldown_ms": 60001,
+          "CPU-load-scale-up_percent": 71.0,
+          "CPU-load-scale-down_percent": 31.0,
+          "max-simulable-time-according-to-data_min": 60,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    },
+    {
+      "request_id": "dt-request-2",
+      "returncode": 0,
+      "metrics": {
+        "innorenew-app-01": {
+          "noise_sensor1": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor2": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor3": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor4": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor5": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor6": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor7": "inside: false, sun-exposed: false, has-classifier: false",
+          "noise_sensor8": "inside: false, sun-exposed: false, has-classifier: true",
+          "noise_sensor9": "inside: false, sun-exposed: false, has-classifier: true",
+          "noise_sensor10": "inside: false, sun-exposed: false, has-classifier: false"
+        },
+        "latency-metrics": {
+          "max-E2E_sec": 28.017,
+          "p95-E2E_sec": 10.012,
+          "p99-E2E_sec": 28.017,
+          "median-E2E_sec": 0.012,
+          "E2E-less-than-10s_percent": 92.26804123711341,
+          "average-E2E-latency_sec": 2.525
+        },
+        "scalin-decision-count": {
+          "scale-up-min": 0,
+          "scale-down-load": 1,
+          "scale-down-temperature": 0,
+          "scale-up-load": 1
+        },
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-energy_kwh": 0.12429124410971655,
+        "size-of-generated-files_mb": 2303,
+        "number-of-sound-events": 3686,
+        "number-of-offloaded-sound-events": 1706,
+        "number-of-sound-events-requiring-processing": 2183,
+        "number-of-processed-files": 2183,
+        "number-of-sound-files-on-noise-sensors": 0,
+        "number-of-sound-files-on-the-remote-servers": 3686,
+        "time-below-the-temperature-threshold_percent": 100.0,
+        "config-parameters": {
+          "sound-level-threshold_db": 71,
+          "min-CPU-temperature_celsius": 51.0,
+          "max-CPU-temperature_celsius": 82.0,
+          "CPU-temperature-threshold_celsius": 81.0,
+          "min-container-count": 1,
+          "scaling cooldown_ms": 60001,
+          "CPU-load-scale-up_percent": 71.0,
+          "CPU-load-scale-down_percent": 31.0,
+          "max-simulable-time-according-to-data_min": 60,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    }
+  ]
+}
