@@ -21,8 +21,14 @@ mvn clean package
 
 In case of failing tests: 
 
+Compile tests, but don't run them:
 ```bash
-mvn clean package -DskipTests
+mvn clean package -DskipTests 
+```
+
+Neither compile nor run tests:
+```bash
+mvn package -Dmaven.test.skip=true
 ```
 
 After a successful build, the simulator JAR will be created in:
