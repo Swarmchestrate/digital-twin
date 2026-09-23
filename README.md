@@ -75,7 +75,7 @@ Run the CLI from the project root directory:
 python -m dt.cli \
   --input path/to/dt-input.json  \
   --jar path/to/simulator.jar \
-  --noise-csv path/to/noise-data.csv \
+  --data-csv path/to/data.csv \
   --output path/to/output_dir \
   --max-workers 4 \            # parallel executions
   --timeout 60                 # timeout per scenario (seconds)
@@ -108,7 +108,7 @@ from dt.engine import DtEngine
 engine = DtEngine(
     input_path="path/to/dt-input.json",
     jar="path/to/simulator.jar",
-    noise_csv_path="path/to/noise-data.csv",
+    data_csv_path="path/to/data.csv",
     output_path="path/to/output_dir",
     max_workers=4,    # parallel executions
     timeout=60,       # timeout per scenario (seconds)

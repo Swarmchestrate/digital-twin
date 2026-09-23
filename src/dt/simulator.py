@@ -13,10 +13,10 @@ import shutil
 
 class SimulatorRunner:
 
-    def __init__(self, result_dir: str | Path, jar_path: str | Path, noise_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, keep_files: bool = False) -> None:
+    def __init__(self, result_dir: str | Path, jar_path: str | Path, data_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, keep_files: bool = False) -> None:
         self.result_dir = Path(result_dir)
         self.jar_path = Path(jar_path)
-        self.noise_csv_path = Path(noise_csv_path)
+        self.data_csv_path = Path(data_csv_path)
         self.max_workers = max_workers
         self.timeout = timeout
         self.keep_files = keep_files
@@ -37,6 +37,7 @@ class SimulatorRunner:
                 futures.append(
                     executor.submit(
                         self._run_single_scenario,
+                        scenario["name"],
                         scenario["request"],
                     )
                 )
@@ -57,7 +58,7 @@ class SimulatorRunner:
             "scenarios": results,
         }
 
-    def _run_single_scenario(self, request: dict) -> dict:
+    def _run_single_scenario(self, scenario_name: str, request: dict) -> dict:
         request_id = request["metadata"]["request_id"]
 
         # Save input for debugging
@@ -76,7 +77,7 @@ class SimulatorRunner:
                 str(self.jar_path),
                 "hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo",
                 str(input_path),
-                str(self.noise_csv_path),
+                str(self.data_csv_path),
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -85,6 +86,7 @@ class SimulatorRunner:
         )
 
         result = {
+            "scenario": scenario_name,
             "request_id": request_id,
             "returncode": None,
         }

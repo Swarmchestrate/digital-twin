@@ -23,9 +23,9 @@ def main() -> None:
     )
 
     parser.add_argument(
-    "--noise-csv",
-    required=True,
-    help="Path to the noise CSV file",
+        "--data-csv",
+        required=True,
+        help="Path to the data CSV file",
     )
 
     parser.add_argument(
@@ -56,7 +56,7 @@ def main() -> None:
 
     args = parser.parse_args()
     print("Starting Digital Twin execution..")
-    engine = DtEngine(args.input, args.jar, args.output, args.noise_csv, args.max_workers, args.timeout, args.keep_files)
+    engine = DtEngine(args.input, args.jar, args.output, args.data_csv, args.max_workers, args.timeout, args.keep_files)
     engine.evaluate_file()
 
 if __name__ == "__main__":
