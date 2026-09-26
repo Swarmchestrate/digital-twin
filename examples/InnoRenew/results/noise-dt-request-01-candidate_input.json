@@ -1,0 +1,331 @@
+{
+  "metadata": {
+    "request_id": "noise-dt-request-01-candidate",
+    "application_type": "InnoRenew",
+    "prediction_horizon_min": 60,
+    "scaling_cooldown_ms": 60000,
+    "sound_level_threshold": 70,
+    "cpu_temperature_threshold": 80,
+    "min_cpu_temperature": 50,
+    "max_cpu_temperature": 80,
+    "min_container_count": 1,
+    "cpu_load_scale_up": 70,
+    "cpu_load_scale_down": 30
+  },
+  "resources": [
+    {
+      "node_id": "edge1",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge2",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge3",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge4",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge5",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge6",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge7",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge8",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge9",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "edge10",
+      "cpu_cores": 8,
+      "storage_gb": 128,
+      "memory_mb": 16000,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 3.0,
+      "max_power_w": 10,
+      "network_latency_ms": 25,
+      "network_bandwidth_bytes_per_ms": 11250
+    },
+    {
+      "node_id": "cloud1",
+      "cpu_cores": 16,
+      "storage_gb": 500,
+      "memory_mb": 32000,
+      "node_type": "cloud",
+      "min_power_w": 5,
+      "idle_power_w": 80,
+      "max_power_w": 300,
+      "network_latency_ms": 12,
+      "network_bandwidth_bytes_per_ms": 31250
+    }
+  ],
+  "application": {
+    "application_id": "innorenew-app-01",
+    "components": [
+      {
+        "component_id": "noise-sensor1",
+        "assigned_resource": "edge1",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor2",
+        "assigned_resource": "edge2",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor3",
+        "assigned_resource": "edge3",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor4",
+        "assigned_resource": "edge4",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor5",
+        "assigned_resource": "edge5",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor6",
+        "assigned_resource": "edge6",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor7",
+        "assigned_resource": "edge7",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor8",
+        "assigned_resource": "edge8",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": true,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor9",
+        "assigned_resource": "edge9",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": true,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "noise-sensor10",
+        "assigned_resource": "edge10",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 512,
+        "properties": {
+          "component_type": "noise-sensor",
+          "image_size_bytes": 2147483648,
+          "cpu_temperature": 70,
+          "classifier": false,
+          "queue_length": 10,
+          "inside": false,
+          "sun": false
+        }
+      },
+      {
+        "component_id": "server1",
+        "assigned_resource": "cloud1",
+        "cpu_request_cores": 4,
+        "memory_request_mb": 4096,
+        "properties": {
+          "component_type": "server",
+          "image_size_bytes": 1073741824
+        }
+      }
+    ]
+  },
+  "operations": [
+    {
+      "type": "classifier_reconfiguration",
+      "component_id": "noise-sensor8",
+      "classifier": false
+    },
+    {
+      "type": "classifier_reconfiguration",
+      "component_id": "noise-sensor9",
+      "classifier": false
+    },
+    {
+      "type": "classifier_reconfiguration",
+      "component_id": "noise-sensor10",
+      "classifier": true
+    }
+  ]
+}

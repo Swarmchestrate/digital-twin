@@ -54,9 +54,35 @@ def main() -> None:
         help="Keep simulator temporary result directory for debugging",
     )
 
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=1234567890,
+        help="Random seed for generated random scenarios",
+    )
+
+    sort_group = parser.add_mutually_exclusive_group(required=True)
+
+    sort_group.add_argument(
+        "--sort-min",
+        metavar="FIELD",
+        help="Select the scenario with the smallest value of FIELD",
+    )
+
+    sort_group.add_argument(
+        "--sort-max",
+        metavar="FIELD",
+        help="Select the scenario with the largest value of FIELD",
+    )
+
     args = parser.parse_args()
+
+    sort_field = args.sort_min or args.sort_max
+    sort_direction = "min" if args.sort_min else "max"
+
     print("Starting Digital Twin execution..")
-    engine = DtEngine(args.input, args.jar, args.output, args.data_csv, args.max_workers, args.timeout, args.keep_files)
+    engine = DtEngine(args.input, args.jar, args.output, args.data_csv, args.max_workers, args.timeout, 
+                      args.keep_files, args.seed, sort_field, sort_direction)
     engine.evaluate_file()
 
 if __name__ == "__main__":

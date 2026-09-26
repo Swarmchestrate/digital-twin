@@ -1,0 +1,301 @@
+{
+  "metadata": {
+    "request_id": "parking-dt-request-01-nbiot-only",
+    "application_type": "FuelicsParking",
+    "prediction_horizon_min": 60,
+    "scaling_cooldown_ms": 60000,
+    "ble_polling_interval_ms": 60000
+  },
+  "resources": [
+    {
+      "node_id": "platform1",
+      "cpu_cores": 8,
+      "storage_gb": 1024,
+      "memory_mb": 16000,
+      "node_type": "cloud",
+      "min_power_w": 20.0,
+      "idle_power_w": 60.0,
+      "max_power_w": 120.0,
+      "network_latency_ms": 15,
+      "network_bandwidth_bytes_per_ms": 125000
+    },
+    {
+      "node_id": "gateway1",
+      "cpu_cores": 4,
+      "storage_gb": 8,
+      "memory_mb": 2048,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 2.0,
+      "max_power_w": 5.0,
+      "network_latency_ms": 50,
+      "network_bandwidth_bytes_per_ms": 1250
+    },
+    {
+      "node_id": "gateway2",
+      "cpu_cores": 4,
+      "storage_gb": 8,
+      "memory_mb": 2048,
+      "node_type": "edge",
+      "min_power_w": 0.5,
+      "idle_power_w": 2.0,
+      "max_power_w": 5.0,
+      "network_latency_ms": 50,
+      "network_bandwidth_bytes_per_ms": 1250
+    }
+  ],
+  "application": {
+    "application_id": "fuelics-parking-app-01",
+    "components": [
+      {
+        "component_id": "parking-sensor1",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor2",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor3",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor4",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor5",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor6",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor7",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor8",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor9",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor10",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor11",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor12",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor13",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor14",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor15",
+        "assigned_resource": "gateway2",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "parking-sensor16",
+        "assigned_resource": "gateway1",
+        "properties": {
+          "component_type": "parking-sensor",
+          "battery_level": 600000,
+          "mode": "NBIOT_PUSH",
+          "nbiot_network_latency_ms": 3000,
+          "nbiot_network_bandwidth_bytes_per_ms": 13,
+          "ble_network_latency_ms": 1000,
+          "ble_network_bandwidth_bytes_per_ms": 125
+        }
+      },
+      {
+        "component_id": "ble-reconfiguration-service-gateway1",
+        "assigned_resource": "gateway1",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 256,
+        "properties": {
+          "component_type": "ble_reconfiguration",
+          "image_size_bytes": 268435456
+        }
+      },
+      {
+        "component_id": "ble-reconfiguration-service-gateway2",
+        "assigned_resource": "gateway2",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 256,
+        "properties": {
+          "component_type": "ble_reconfiguration",
+          "image_size_bytes": 268435456
+        }
+      },
+      {
+        "component_id": "nbiot-reconfiguration-service",
+        "assigned_resource": "platform1",
+        "cpu_request_cores": 1,
+        "memory_request_mb": 256,
+        "properties": {
+          "component_type": "nbiot_reconfiguration",
+          "image_size_bytes": 268435456
+        }
+      },
+      {
+        "component_id": "parking-platform-service",
+        "assigned_resource": "platform1",
+        "cpu_request_cores": 2,
+        "memory_request_mb": 1024,
+        "properties": {
+          "component_type": "server",
+          "image_size_bytes": 1073741824
+        }
+      }
+    ]
+  },
+  "operations": []
+}

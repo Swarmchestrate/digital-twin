@@ -10,13 +10,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 import time
 import shutil
+import time
 
 class SimulatorRunner:
 
     def __init__(self, result_dir: str | Path, jar_path: str | Path, data_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, keep_files: bool = False) -> None:
-        self.result_dir = Path(result_dir)
-        self.jar_path = Path(jar_path)
-        self.data_csv_path = Path(data_csv_path)
+        self.result_dir = Path(result_dir).resolve()
+        self.jar_path = Path(jar_path).resolve()
+        self.data_csv_path = Path(data_csv_path).resolve()
         self.max_workers = max_workers
         self.timeout = timeout
         self.keep_files = keep_files
@@ -27,7 +28,7 @@ class SimulatorRunner:
         results: list[dict] = []
 
         # Output file for aggregated results
-        result_file = self.result_dir / "results.json"
+        result_file = self.result_dir /  "raw_results.json"
 
         # Thread pool manages parallel execution of scenarios
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -41,7 +42,7 @@ class SimulatorRunner:
                         scenario["request"],
                     )
                 )
-                time.sleep(0.001)
+                time.sleep(0.1)
 
             # Process results as soon as they complete
             for future in as_completed(futures):
@@ -51,7 +52,7 @@ class SimulatorRunner:
             self._write_result_file(result_file, results)
 
         if not self.keep_files:
-            shutil.rmtree("sim_res", ignore_errors=True)
+            shutil.rmtree(self.jar_path.parent / "sim_res", ignore_errors=True)
         
         return {
             "scenario_count": len(results),
@@ -83,6 +84,7 @@ class SimulatorRunner:
             stderr=subprocess.PIPE,
             text=True,
             start_new_session=True,
+            cwd=self.jar_path.parent,
         )
 
         result = {
@@ -119,7 +121,7 @@ class SimulatorRunner:
                 )
             else:
                 #proc.kill()
-                os.killpg(proc.pid, signal.SIGTERM)
+                os.killpg(proc.pid, signal.SIGKILL)
                 
             result["status"] = "timeout"
             result["stderr"] = (

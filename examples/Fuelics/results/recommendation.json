@@ -1,0 +1,39 @@
+{
+  "sort": {
+    "field": "battery-consumed_percent",
+    "direction": "min"
+  },
+  "candidate_is_best": false,
+  "best_scenario": "nbiot-only",
+  "best_value": 0.00109375,
+  "best_assignment": {
+    "gateway1": {
+      "parking-sensor1": "NBIOT_PUSH",
+      "parking-sensor2": "NBIOT_PUSH",
+      "parking-sensor3": "NBIOT_PUSH",
+      "parking-sensor4": "NBIOT_PUSH",
+      "parking-sensor5": "NBIOT_PUSH",
+      "parking-sensor6": "NBIOT_PUSH",
+      "parking-sensor7": "NBIOT_PUSH",
+      "parking-sensor8": "NBIOT_PUSH",
+      "parking-sensor9": "NBIOT_PUSH",
+      "parking-sensor10": "NBIOT_PUSH",
+      "parking-sensor11": "NBIOT_PUSH",
+      "parking-sensor12": "NBIOT_PUSH",
+      "parking-sensor13": "NBIOT_PUSH",
+      "parking-sensor14": "NBIOT_PUSH",
+      "parking-sensor16": "NBIOT_PUSH"
+    },
+    "gateway2": {
+      "parking-sensor15": "NBIOT_PUSH"
+    }
+  },
+  "scenario_values": {
+    "current": 0.0028125,
+    "candidate": 0.01,
+    "nbiot-only": 0.00109375,
+    "random": 0.0059375
+  },
+  "failed_scenarios": [],
+  "comparison_to_nbiot_only_percent": 0.0
+}

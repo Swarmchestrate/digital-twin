@@ -3,10 +3,13 @@ Build simulation inputs for each scenario.
 """
 
 import copy
-
+import random
 
 class ScenarioBuilder:
     """Builds executable scenarios from a digital twin request."""
+
+    def __init__(self, random_seed: int = 1234567890) -> None:
+        self.random_seed = random_seed
 
     def build(self, request: dict) -> list[dict]:
         application_type = request["metadata"]["application_type"]
@@ -22,23 +25,52 @@ class ScenarioBuilder:
     def _build_innorenew_scenarios(self, request: dict) -> list[dict]:
         original_request_id = request["metadata"]["request_id"]
 
-        original_scenario = copy.deepcopy(request)
-        original_scenario["metadata"]["request_id"] = f"{original_request_id}-1"
+        candidate_scenario = copy.deepcopy(request)
+        candidate_scenario["metadata"]["request_id"] = (
+            f"{original_request_id}-candidate"
+        )
 
-        baseline_scenario = copy.deepcopy(request)
-        baseline_scenario["metadata"]["request_id"] = f"{original_request_id}-2"
-        baseline_scenario["operations"] = []
+        current_scenario = copy.deepcopy(request)
+        current_scenario["metadata"]["request_id"] = (
+            f"{original_request_id}-current"
+        )
+        current_scenario["operations"] = []
+
+        rng = random.Random(self.random_seed)
+
+        random_scenario = copy.deepcopy(candidate_scenario)
+        random_scenario["metadata"]["request_id"] = (
+            candidate_scenario["metadata"]["request_id"].rsplit("-", 1)[0] + "-random"
+        )
+
+        random_operations = []
+
+        for component in random_scenario["application"]["components"]:
+            if component.get("properties", {}).get("component_type") != "noise-sensor":
+                continue
+
+            random_operations.append({
+                "type": "classifier_reconfiguration",
+                "component_id": component["component_id"],
+                "classifier": rng.choice([True, False]),
+            })
+
+        random_scenario["operations"] = random_operations
 
         return [
             {
                 "name": "candidate",
-                "request": original_scenario,
+                "request": candidate_scenario,
             },
             {
-                "name": "baseline",
-                "request": baseline_scenario,
+                "name": "current",
+                "request": current_scenario,
             },
-        ]
+            {
+                "name": "random",
+                "request": random_scenario,
+            },
+    ]
 
     def _build_parking_scenarios(self, request: dict) -> list[dict]:
         original_request_id = request["metadata"]["request_id"]
@@ -55,10 +87,29 @@ class ScenarioBuilder:
         nbiot_only_scenario["operations"] = []
 
         for component in nbiot_only_scenario["application"]["components"]:
-            properties = component.get("properties", {})
+            if component.get("properties", {}).get("component_type") == "parking-sensor":
+                component["properties"]["mode"] = "NBIOT_PUSH"
 
-            if properties.get("component_type") == "parking-sensor":
-                properties["mode"] = "NBIOT_PUSH"
+        rng = random.Random(self.random_seed)
+
+        random_scenario = copy.deepcopy(candidate_scenario)
+        random_scenario["metadata"]["request_id"] = (
+            candidate_scenario["metadata"]["request_id"].rsplit("-", 1)[0] + "-random"
+        )
+
+        random_operations = []
+
+        for component in random_scenario["application"]["components"]:
+            if component.get("properties", {}).get("component_type") != "parking-sensor":
+                continue
+
+            random_operations.append({
+                "type": "sensor_mode_reconfiguration",
+                "component_id": component["component_id"],
+                "target_mode": rng.choice(["NBIOT_PUSH", "BLE_POLL"]),
+            })
+
+        random_scenario["operations"] = random_operations
 
         return [
             {
@@ -72,5 +123,9 @@ class ScenarioBuilder:
             {
                 "name": "nbiot-only",
                 "request": nbiot_only_scenario,
+            },
+            {
+                "name": "random",
+                "request": random_scenario,
             },
         ]

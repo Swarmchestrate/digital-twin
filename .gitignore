@@ -208,6 +208,6 @@ __marimo__/
 
 # Miscellaneous
 *env/
-examples/
+# examples/
 sim_res/
 *DS_Store

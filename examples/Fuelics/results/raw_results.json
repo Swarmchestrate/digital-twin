@@ -1,0 +1,289 @@
+{
+  "scenario_count": 4,
+  "scenarios": [
+    {
+      "scenario": "current",
+      "request_id": "parking-dt-request-01-current",
+      "returncode": 0,
+      "metrics": {
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-data-received-by-platform_bytes": 350,
+        "events-received-by-platform": 7,
+        "number-of-parking-events": 7,
+        "assignment": {
+          "gateway1": {
+            "parking-sensor1": "BLE_POLL",
+            "parking-sensor2": "BLE_POLL",
+            "parking-sensor3": "BLE_POLL",
+            "parking-sensor4": "NBIOT_PUSH",
+            "parking-sensor5": "NBIOT_PUSH",
+            "parking-sensor6": "NBIOT_PUSH",
+            "parking-sensor7": "NBIOT_PUSH",
+            "parking-sensor8": "NBIOT_PUSH",
+            "parking-sensor9": "NBIOT_PUSH",
+            "parking-sensor10": "NBIOT_PUSH",
+            "parking-sensor11": "NBIOT_PUSH",
+            "parking-sensor12": "NBIOT_PUSH",
+            "parking-sensor13": "NBIOT_PUSH",
+            "parking-sensor14": "NBIOT_PUSH",
+            "parking-sensor16": "NBIOT_PUSH"
+          },
+          "gateway2": {
+            "parking-sensor15": "NBIOT_PUSH"
+          }
+        },
+        "parking-sensors": {
+          "parking-sensor1": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor2": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor3": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor4": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor5": "mode: NBIOT_PUSH, battery: 599970, event-count: 2",
+          "parking-sensor6": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor7": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor8": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor9": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor10": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor11": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor12": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor13": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor14": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor15": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor16": "mode: NBIOT_PUSH, battery: 600000, event-count: 0"
+        },
+        "total-battery-consumed": 270,
+        "total-battery-remaining": 9599730,
+        "battery-consumed_percent": 0.0028125,
+        "latency-metrics": {
+          "max-E2E_sec": 3.004,
+          "p95-E2E_sec": 3.004,
+          "p99-E2E_sec": 3.004,
+          "median-E2E_sec": 3.004,
+          "average-E2E-latency_sec": 2.7248571428571426
+        },
+        "config-parameters": {
+          "orchestration-enabled": false,
+          "scaling-cooldown_ms": 60000,
+          "BLE-polling-interval_ms": 60000,
+          "number-of-sensors": 16,
+          "number-of-gateways": 2,
+          "max-simulable-time-according-to-data_min": 1439,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    },
+    {
+      "scenario": "candidate",
+      "request_id": "parking-dt-request-01-candidate",
+      "returncode": 0,
+      "metrics": {
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-data-received-by-platform_bytes": 350,
+        "events-received-by-platform": 7,
+        "number-of-parking-events": 7,
+        "assignment": {
+          "gateway1": {
+            "parking-sensor1": "BLE_POLL",
+            "parking-sensor2": "BLE_POLL",
+            "parking-sensor3": "BLE_POLL",
+            "parking-sensor4": "BLE_POLL",
+            "parking-sensor5": "BLE_POLL",
+            "parking-sensor6": "BLE_POLL",
+            "parking-sensor7": "BLE_POLL",
+            "parking-sensor8": "BLE_POLL",
+            "parking-sensor9": "BLE_POLL",
+            "parking-sensor10": "BLE_POLL",
+            "parking-sensor11": "BLE_POLL",
+            "parking-sensor12": "BLE_POLL",
+            "parking-sensor13": "BLE_POLL",
+            "parking-sensor14": "BLE_POLL",
+            "parking-sensor16": "BLE_POLL"
+          },
+          "gateway2": {
+            "parking-sensor15": "BLE_POLL"
+          }
+        },
+        "parking-sensors": {
+          "parking-sensor1": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor2": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor3": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor4": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor5": "mode: BLE_POLL, battery: 599940, event-count: 2",
+          "parking-sensor6": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor7": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor8": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor9": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor10": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor11": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor12": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor13": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor14": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor15": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor16": "mode: BLE_POLL, battery: 599940, event-count: 0"
+        },
+        "total-battery-consumed": 960,
+        "total-battery-remaining": 9599040,
+        "battery-consumed_percent": 0.01,
+        "latency-metrics": {
+          "max-E2E_sec": 61.051,
+          "p95-E2E_sec": 61.051,
+          "p99-E2E_sec": 61.051,
+          "median-E2E_sec": 61.05,
+          "average-E2E-latency_sec": 35.336
+        },
+        "config-parameters": {
+          "orchestration-enabled": false,
+          "scaling-cooldown_ms": 60000,
+          "BLE-polling-interval_ms": 60000,
+          "number-of-sensors": 16,
+          "number-of-gateways": 2,
+          "max-simulable-time-according-to-data_min": 1439,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    },
+    {
+      "scenario": "nbiot-only",
+      "request_id": "parking-dt-request-01-nbiot-only",
+      "returncode": 0,
+      "metrics": {
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-data-received-by-platform_bytes": 350,
+        "events-received-by-platform": 7,
+        "number-of-parking-events": 7,
+        "assignment": {
+          "gateway1": {
+            "parking-sensor1": "NBIOT_PUSH",
+            "parking-sensor2": "NBIOT_PUSH",
+            "parking-sensor3": "NBIOT_PUSH",
+            "parking-sensor4": "NBIOT_PUSH",
+            "parking-sensor5": "NBIOT_PUSH",
+            "parking-sensor6": "NBIOT_PUSH",
+            "parking-sensor7": "NBIOT_PUSH",
+            "parking-sensor8": "NBIOT_PUSH",
+            "parking-sensor9": "NBIOT_PUSH",
+            "parking-sensor10": "NBIOT_PUSH",
+            "parking-sensor11": "NBIOT_PUSH",
+            "parking-sensor12": "NBIOT_PUSH",
+            "parking-sensor13": "NBIOT_PUSH",
+            "parking-sensor14": "NBIOT_PUSH",
+            "parking-sensor16": "NBIOT_PUSH"
+          },
+          "gateway2": {
+            "parking-sensor15": "NBIOT_PUSH"
+          }
+        },
+        "parking-sensors": {
+          "parking-sensor1": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor2": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor3": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor4": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor5": "mode: NBIOT_PUSH, battery: 599970, event-count: 2",
+          "parking-sensor6": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor7": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor8": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor9": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor10": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor11": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor12": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor13": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor14": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor15": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor16": "mode: NBIOT_PUSH, battery: 600000, event-count: 0"
+        },
+        "total-battery-consumed": 105,
+        "total-battery-remaining": 9599895,
+        "battery-consumed_percent": 0.00109375,
+        "latency-metrics": {
+          "max-E2E_sec": 3.004,
+          "p95-E2E_sec": 3.004,
+          "p99-E2E_sec": 3.004,
+          "median-E2E_sec": 3.004,
+          "average-E2E-latency_sec": 3.004
+        },
+        "config-parameters": {
+          "orchestration-enabled": false,
+          "scaling-cooldown_ms": 60000,
+          "BLE-polling-interval_ms": 60000,
+          "number-of-sensors": 16,
+          "number-of-gateways": 2,
+          "max-simulable-time-according-to-data_min": 1439,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    },
+    {
+      "scenario": "random",
+      "request_id": "parking-dt-request-01-random",
+      "returncode": 0,
+      "metrics": {
+        "simulated-time_min": 60,
+        "simulator-runtime_sec": 0,
+        "total-data-received-by-platform_bytes": 350,
+        "events-received-by-platform": 7,
+        "number-of-parking-events": 7,
+        "assignment": {
+          "gateway1": {
+            "parking-sensor1": "NBIOT_PUSH",
+            "parking-sensor2": "BLE_POLL",
+            "parking-sensor3": "NBIOT_PUSH",
+            "parking-sensor4": "BLE_POLL",
+            "parking-sensor5": "BLE_POLL",
+            "parking-sensor6": "NBIOT_PUSH",
+            "parking-sensor7": "BLE_POLL",
+            "parking-sensor8": "NBIOT_PUSH",
+            "parking-sensor9": "BLE_POLL",
+            "parking-sensor10": "NBIOT_PUSH",
+            "parking-sensor11": "NBIOT_PUSH",
+            "parking-sensor12": "BLE_POLL",
+            "parking-sensor13": "BLE_POLL",
+            "parking-sensor14": "BLE_POLL",
+            "parking-sensor16": "NBIOT_PUSH"
+          },
+          "gateway2": {
+            "parking-sensor15": "BLE_POLL"
+          }
+        },
+        "parking-sensors": {
+          "parking-sensor1": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor2": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor3": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor4": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor5": "mode: BLE_POLL, battery: 599940, event-count: 2",
+          "parking-sensor6": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor7": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor8": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor9": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor10": "mode: NBIOT_PUSH, battery: 600000, event-count: 0",
+          "parking-sensor11": "mode: NBIOT_PUSH, battery: 599985, event-count: 1",
+          "parking-sensor12": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor13": "mode: BLE_POLL, battery: 599940, event-count: 0",
+          "parking-sensor14": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor15": "mode: BLE_POLL, battery: 599940, event-count: 1",
+          "parking-sensor16": "mode: NBIOT_PUSH, battery: 600000, event-count: 0"
+        },
+        "total-battery-consumed": 570,
+        "total-battery-remaining": 9599430,
+        "battery-consumed_percent": 0.0059375,
+        "latency-metrics": {
+          "max-E2E_sec": 61.051,
+          "p95-E2E_sec": 61.051,
+          "p99-E2E_sec": 61.051,
+          "median-E2E_sec": 3.004,
+          "average-E2E-latency_sec": 27.322857142857142
+        },
+        "config-parameters": {
+          "orchestration-enabled": false,
+          "scaling-cooldown_ms": 60000,
+          "BLE-polling-interval_ms": 60000,
+          "number-of-sensors": 16,
+          "number-of-gateways": 2,
+          "max-simulable-time-according-to-data_min": 1439,
+          "requested-prediction-horizon_min": 60
+        }
+      }
+    }
+  ]
+}
