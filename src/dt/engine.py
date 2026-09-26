@@ -27,7 +27,7 @@ class DtEngine:
         self.data_csv_path = Path(data_csv_path)
             
         self.scenario_builder = ScenarioBuilder(seed)
-        self.simulator_runner = SimulatorRunner(output_path, jar, data_csv_path, max_workers, timeout, keep_files)
+        self.simulator_runner = SimulatorRunner(output_path, jar, data_csv_path, max_workers, timeout, keep_files, seed)
         self.output_path = Path(output_path)
         self.sort_field = sort_field
         self.sort_direction = sort_direction

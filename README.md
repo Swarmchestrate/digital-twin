@@ -79,11 +79,14 @@ python -m dt.cli \
   --jar path/to/simulator.jar \
   --data-csv path/to/data.csv \
   --output path/to/output_dir \
-  --sort-min "metric-name" \
+  --sort-min metric-name \
+  --seed 1234567890 \
   --max-workers 4 \
   --timeout 60 \
   --keep-files
 ```
+
+`--seed` controls both the deterministic random scenario generation in the Python library and the random behavior of the DISSECT-CF-Fog simulator. The same seed is forwarded to the simulator for every generated scenario.
 
 Use `--sort-min <FIELD>` when lower values are better, or `--sort-max <FIELD>` when higher values are better.
 
@@ -136,6 +139,7 @@ engine = DtEngine(
     keep_files=True,
     sort_field="average-E2E-latency_sec",
     sort_direction="min",
+    seed=1234567890,
 )
 
 result = engine.evaluate_file()

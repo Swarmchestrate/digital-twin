@@ -14,13 +14,15 @@ import time
 
 class SimulatorRunner:
 
-    def __init__(self, result_dir: str | Path, jar_path: str | Path, data_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, keep_files: bool = False) -> None:
+    def __init__(self, result_dir: str | Path, jar_path: str | Path, data_csv_path: str | Path, max_workers: int = 1, timeout: int = 60, 
+            keep_files: bool = False, seed: int = 1234567890,) -> None:
         self.result_dir = Path(result_dir).resolve()
         self.jar_path = Path(jar_path).resolve()
         self.data_csv_path = Path(data_csv_path).resolve()
         self.max_workers = max_workers
         self.timeout = timeout
         self.keep_files = keep_files
+        self.seed = seed
 
     def run_scenarios(self, scenarios: list[dict]) -> dict:
         self.result_dir.mkdir(parents=True, exist_ok=True)
@@ -79,6 +81,7 @@ class SimulatorRunner:
                 "hu.u_szeged.inf.fog.simulator.agent.demo.DigitalTwinDemo",
                 str(input_path),
                 str(self.data_csv_path),
+                str(self.seed),
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
