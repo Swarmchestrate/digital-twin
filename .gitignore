@@ -211,3 +211,4 @@ __marimo__/
 # examples/
 sim_res/
 *DS_Store
+*.jar
