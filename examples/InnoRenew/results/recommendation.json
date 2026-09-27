@@ -4,24 +4,24 @@
     "direction": "min"
   },
   "candidate_is_best": false,
-  "best_scenario": "random",
-  "best_value": 2.618284396200814,
+  "best_scenario": "current",
+  "best_value": 2.80116852405545,
   "best_assignment": {
-    "noise-sensor1": true,
+    "noise-sensor1": false,
     "noise-sensor2": false,
-    "noise-sensor3": true,
+    "noise-sensor3": false,
     "noise-sensor4": false,
     "noise-sensor5": false,
-    "noise-sensor6": true,
+    "noise-sensor6": false,
     "noise-sensor7": false,
     "noise-sensor8": true,
-    "noise-sensor9": false,
-    "noise-sensor10": true
+    "noise-sensor9": true,
+    "noise-sensor10": false
   },
   "scenario_values": {
-    "candidate": 3.1770645861601086,
-    "current": 3.304642605156038,
-    "random": 2.618284396200814
+    "current": 2.80116852405545,
+    "candidate": 3.5650973355084283,
+    "random": 2.8930239130434785
   },
   "failed_scenarios": []
 }

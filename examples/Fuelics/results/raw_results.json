@@ -68,7 +68,8 @@
           "number-of-sensors": 16,
           "number-of-gateways": 2,
           "max-simulable-time-according-to-data_min": 1439,
-          "requested-prediction-horizon_min": 60
+          "requested-prediction-horizon_min": 60,
+          "seed": 1234567890
         }
       }
     },
@@ -139,7 +140,8 @@
           "number-of-sensors": 16,
           "number-of-gateways": 2,
           "max-simulable-time-according-to-data_min": 1439,
-          "requested-prediction-horizon_min": 60
+          "requested-prediction-horizon_min": 60,
+          "seed": 1234567890
         }
       }
     },
@@ -210,7 +212,8 @@
           "number-of-sensors": 16,
           "number-of-gateways": 2,
           "max-simulable-time-according-to-data_min": 1439,
-          "requested-prediction-horizon_min": 60
+          "requested-prediction-horizon_min": 60,
+          "seed": 1234567890
         }
       }
     },
@@ -281,7 +284,8 @@
           "number-of-sensors": 16,
           "number-of-gateways": 2,
           "max-simulable-time-according-to-data_min": 1439,
-          "requested-prediction-horizon_min": 60
+          "requested-prediction-horizon_min": 60,
+          "seed": 1234567890
         }
       }
     }
