@@ -212,3 +212,4 @@ __marimo__/
 sim_res/
 *DS_Store
 *.jar
+*.zip
