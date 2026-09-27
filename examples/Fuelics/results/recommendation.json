@@ -35,5 +35,5 @@
     "random": 0.0059375
   },
   "failed_scenarios": [],
-  "comparison_to_nbiot_only_percent": 0.0
+  "lifetime_improvement_percent": 0.0
 }

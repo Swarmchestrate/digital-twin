@@ -54,13 +54,14 @@ class DtEngine:
             if (
                 nbiot_value is not None
                 and best_value is not None
-                and nbiot_value != 0
+                and nbiot_value > 0
+                and best_value > 0
                 and self.sort_field == "battery-consumed_percent"
                 and self.sort_direction == "min"
-            ):
-                recommendation["comparison_to_nbiot_only_percent"] = (
-                    (nbiot_value - best_value) / nbiot_value * 100.0
-                )
+):
+                recommendation["lifetime_improvement_percent"] = (
+                    (nbiot_value / best_value) - 1.0
+                ) * 100.0
                 
         recommendation_file = self.output_path / "recommendation.json"
         with recommendation_file.open("w", encoding="utf-8") as f:
